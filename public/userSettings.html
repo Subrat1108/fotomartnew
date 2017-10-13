@@ -1,0 +1,15 @@
+<div>
+    <form class="form-auth" ng-submit="settingsUpdate()">
+            
+            <p> Change Password
+            <input type="password" ng-model="settings.changedPassword" placeholder="Enter New Password" class="form-control"><br>
+            <input type="password" ng-model="settings.changedPassword2" placeholder="Enter New Password" class="form-control"><br>
+            <div ng-if="settings.changedPassword===settings.changedPassword2">
+            <input type="submit" value="Change Password" class="btn btn-primary" />
+            </div>
+            <div ng-if="settings.changedPassword !== settings.changedPassword2">
+                    <p class="text-warning">passwords do not match! Please try again</p>
+            </div>
+            <p class="text-warning">{{error_message}}</p>
+    </form>
+</div>

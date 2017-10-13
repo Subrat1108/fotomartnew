@@ -1,0 +1,17 @@
+<div class="container">
+    <p class="welcomenote">
+        <h1>Hi {{current_user}}!</h1>
+        <h4>We are trying to put up a COMMUNITY section for all the photographs of all the registered users in here ;)</h4>
+    </p>
+    <div>
+      <form ng-submit="thoughtUpload()">
+          <textarea required class="form-control" maxlength="200" rows="3" ng-model="post" />
+           <input type="submit"  value="Post your Thoughts">
+      </form>
+      </div>
+      <div class="post" ng-repeat="post in thoughts" ng-class-odd="'odd post'" ng-class-even="'even post'"> <!---addl param :true reverses order -->
+          <p>{{post.post}}</p>
+          <small>Posted by <span style="color : orange"> {{post.created_by}}</span></small> <small class="pull-right">{{post.created_at | date:"h:mma 'on' MMM d, y"}}</small>
+      </div>
+</div>
+

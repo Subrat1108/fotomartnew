@@ -1,0 +1,32 @@
+
+<div id="mySidenav" class="sidenav" >
+
+    <div id="sideNavMenu">
+
+        <div>
+
+            <!-- <img src="./uploads/profilePics/{{DP.file.filename}}" style="width :40px"> -->
+
+            <!-- <form ng-submit="changePic()" class="form-inline" style="padding-bottom : 20px">
+                <input class="form-control btn-default" type="file" name="file" id="file" ng-model="DP.file" ngf-select ngf-max-size="25MB"/>
+                <button class="btn btn-default" type="submit" value="Upload">Upload</button>
+            </form> -->
+            {{current_user}}
+
+        </div>
+        <div>
+            <li ng-click="viewSetter1()">My portfolio</li>
+            <li ng-click="viewSetter2()">My followings</li>
+            <li ng-click="viewSetter3()">My Followers</li>
+            <li ng-click="viewSetter4()">My Settings</li>
+        </div>
+        <div id="sideNavFooter">
+                <li><a href="#">logout</a></li>
+                <li><a href="#">Delete Account</a></li>
+        </div>
+    </div>
+</div>
+
+<div class="main"  ng-include="subView">
+    <h1>Welcome {{current_user}}</h1>
+</div>

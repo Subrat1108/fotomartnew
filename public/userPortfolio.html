@@ -1,0 +1,29 @@
+<div class="contents">
+    <li class="col-lg-3 col-md-4 col-xs-6" ng-repeat="upload in userUploads">
+      <a data-toggle="modal" data-target="#myModal" ng-click="modalContents(upload)">
+      <img class="img-fluid img-thumbnail" src='./uploads/{{upload.file.filename}}'>
+      </a>
+    </li>
+  </div>
+
+  <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <img src='./uploads/{{userData.file.filename}}'class="modalImg">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="downloadFile()" data-dismiss="modal">Download</button>
+        <button type="button" class="btn btn-default" ng-click="deleteFile()" data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+
+  </div>
+</div>

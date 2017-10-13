@@ -1,0 +1,160 @@
+body {
+	padding-top:70px;
+	width: 100%;
+    height: 100%;
+
+    font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#welcome {
+/* padding: 50px; */
+padding-top: 150px;
+background-color: snow;
+width: 100%;
+height: 100%;
+opacity: 0.50;
+text-align: center;
+display: inline-block;
+position: absolute;
+top : 0px;
+z-index: 10;
+
+}
+.profileContent{
+    padding: 50px;
+    margin: 30px;
+    float: left;
+    list-style: none;
+    display: block;
+    width: 300px;
+    height: 500px;
+    background-color: orange;
+}
+li:hover{
+    cursor: pointer;
+    color: grey;
+}
+.profileDetails{
+    padding: 50px;
+    margin: 30px;
+    text-align: center;
+    display: block;
+    text-align: center;
+}
+.post {
+	padding: 10px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+.odd {
+	background-color: #433D37;
+	color: white;
+}
+.even {
+	background-color: #FFFFFF;
+}
+
+.contents{
+    padding: 20px;
+    margin: 30px;
+    overflow-y: auto;
+    float: left;   
+}
+li{
+    list-style-type: none;
+}
+#myCarousel{
+    display: block;
+    height: 450px;
+    width: 1150px;
+    overflow: hidden;
+    background-color: slategrey;
+}
+#LController{
+    position: absolute;
+    z-index: 11;
+    top: 50%;
+    left: 15px
+}
+#RController{
+    position: absolute;
+    z-index: 11;
+    top: 50%;
+    right: 15px;
+}
+
+.uploadForm{
+width: 100%;
+display: inline-block;
+text-align: center;
+margin-top: 30px;
+}
+
+/* #sticky {
+    padding: 0.5ex;
+    width: 600px;
+    color: #fff;
+    font-size: 2em;
+    border-radius: 0.5ex;
+} */
+
+#sticky.stick {
+    margin-top: 0 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 14;
+    background-color:white;
+    /* border-bottom: 2px solid slategrey; */
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+   
+}
+.modalImg{
+    width: 100%;
+    height: 100%;
+}
+.modal-body{
+    width: 100%;
+    height: 100%;
+}
+
+
+/*******************************************************************************************************/
+
+/* The sidenav */
+.sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color:orange;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+  
+  /* Page content */
+  .main {
+    margin-left: 200px; /* Same as the width of the sidenav */
+    height: 100%;
+  }
+
+  #sideNavMenu{
+      position: fixed;
+      display: block;
+      top: 50px;
+      padding: 20px;
+  }
+
+  #sideNavFooter{
+      position: fixed;
+      display: block;
+      bottom: 30px;
+  }

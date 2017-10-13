@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="fotoMart">
+  <head>
+    <title>Fotomart</title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-resource.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/11.2.0/ng-file-upload.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<script src="/javascripts/fotomartApp.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+   <body>
+    <div id="main">
+    <nav class="navbar-fluid navbar-default navbar-fixed-top">
+				<div class="container">
+						<a class="navbar-brand" href="#">fotomart</a>
+						<p class="navbar-text"><b style="color : orange">Click - Upload - Earn</b></p>
+						<ul class="nav navbar-nav">
+               <li><a href="#">Home</a></li>
+               <li><a href="#/userProfile">Profile</a></li>
+               <li><a href="#/community">Community</a></li>
+							 <li><a href="#/competition">Competition</a></li>
+							 <li><a href="#/cart">Cart</a></li>
+           </ul>
+           <ul class="nav navbar-nav navbar-right">
+               <li ng-hide="authenticated"><a href="#/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+               <li ng-hide="authenticated"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+							 <li ng-show="authenticated"><a href="#" ng-click="signout()"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+							 <li ng-show="authenticated"><a href="#"><span class="	glyphicon glyphicon-user "></span>Logged in as <b style="color:orange">{{current_user}}</b></a></li>
+           </ul>
+				</div>
+			</nav>
+    <div ng-view>
+		</div>
+		</div>
+	</body>
+	<footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; fotomart 2017</p>
+      </div>
+  </footer>
+</html>
