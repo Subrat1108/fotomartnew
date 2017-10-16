@@ -76,6 +76,7 @@ app.controller('authController', function($scope, $http, $rootScope, $location){
     $http.post('/auth/login', $scope.user).success(function(data){
       if(data.state == 'success'){
         $rootScope.authenticated = true;
+        alert($rootScope.authenticated);
         $rootScope.current_user = data.user.username;
         $rootScope.current_user_id = data.user._id;
         $location.path('/');
@@ -90,6 +91,7 @@ app.controller('authController', function($scope, $http, $rootScope, $location){
     $http.post('/auth/signup', $scope.user).success(function(data){
       if(data.state == 'success'){
         $rootScope.authenticated = true;
+        alert($rootScope.authenticated);
         $rootScope.current_user = data.user.username;
         $location.path('/');
       }
