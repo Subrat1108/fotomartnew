@@ -16,7 +16,7 @@ mongoose.Promise = global.Promise;                         //add for Mongo suppo
 var models = require('./models/models.js');                 //mongoose schemas
 var multer = require('multer');
 
-mongoose.connect('mongodb://localhost/fotomart');              //connect to Mongo
+mongoose.connect('mongodb://subrat:hastings@ec2-18-220-183-161.us-east-2.compute.amazonaws.com:27017git /dummyDB');              //connect to Mongo
 
 //import the routers
 var index = require('./routes/index');
