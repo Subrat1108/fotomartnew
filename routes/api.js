@@ -1,4 +1,5 @@
 var aws = require('aws-sdk');
+
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
@@ -12,8 +13,8 @@ var User = mongoose.model('User');
 var Upload = mongoose.model('Upload');
 
 aws.config.update({
-	secretAccessKey: 'XoAHPYdKNhxKqQiQ7LdBadcTJW631JhzD/eI8/FH',
-	accessKeyId: 'AKIAINFPVITBHTJZRDVQ',
+	secretAccessKey: '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',
+	accessKeyId: 'AKIAJ5RV5O7CFZZLQIQQ',
 });
 
 var s3 = new aws.S3({});
@@ -29,7 +30,7 @@ var upload = multer(
       cb(null, {fieldName: file.fieldname});
     },
     key: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname));
+      cb(null,'https://s3.ap-south-1.amazonaws.com/fotomartploads/'+ file.fieldname + '-' + Date.now()+ path.extname(file.originalname));
     }
   })
 });
