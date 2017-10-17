@@ -13,8 +13,8 @@ var User = mongoose.model('User');
 var Upload = mongoose.model('Upload');
 
 aws.config.update({
-	secretAccessKey: '52M6yXLH4vm7dQwWCqc4QEo1VZkfhI1SArr3pG3U',
-	accessKeyId: 'AKIAIXJCWYBPFMZJNECQ',
+	secretAccessKey: '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',
+	accessKeyId: 'AKIAIUYYT2QF4TNTRATA',
 });
 
 var s3 = new aws.S3({});
