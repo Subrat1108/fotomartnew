@@ -22,7 +22,7 @@ var upload = multer({ storage: storage });
 
 var profileStorage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'E:/fotomart/public/uploads/profilePics/')
+    cb(null, './public/uploads/profilePics/')
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
