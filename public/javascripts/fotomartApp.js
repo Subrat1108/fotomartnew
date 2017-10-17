@@ -80,6 +80,7 @@ app.controller('authController', function($scope, $http, $rootScope, $location){
         $rootScope.current_user = data.user.username;
         $rootScope.current_user_id = data.user._id;
         $location.path('/');
+        
       }
       else{
         $scope.error_message = data.message;
