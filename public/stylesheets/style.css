@@ -158,3 +158,10 @@ margin-top: 30px;
       display: block;
       bottom: 30px;
   }
+
+  .loading{
+    padding: 10px;
+    text-align: center;
+    color : red;
+
+  }

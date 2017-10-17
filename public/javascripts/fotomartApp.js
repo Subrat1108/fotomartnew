@@ -128,9 +128,12 @@ app.controller("mainController", function($scope,Upload,$http,$rootScope){
     $(window).scroll(sticky_relocate);
     sticky_relocate();
 });
+   
+  $scope.loading = false;   
 
   $scope.submit = function(){
     $scope.upload.current_user = $rootScope.current_user;
+    $scope.loading = true; 
     Upload.upload({
       url: '/api/picUpload/',
       method: 'post',
@@ -142,6 +145,7 @@ app.controller("mainController", function($scope,Upload,$http,$rootScope){
     }).then(function (){$http.get('/api/picUpload/').then(function(response){
       console.log(response.data);
       $scope.uploads = response.data;
+      $scope.loading = false; 
     });}
   )
 }

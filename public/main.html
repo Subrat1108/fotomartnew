@@ -69,10 +69,17 @@
               <label for="file">File:</label>
               <input class="form-control btn-default" type="file" name="file" id="file" ng-model="upload.file" ngf-select ngf-max-size="25MB" required/>
               </div>
-              <button class="btn btn-default" type="submit" value="Upload">Upload</button>
-    
-            </form>
+              <button class="btn btn-default" type="submit" value="Upload">
+                  <span ng-if="loading" class="loading">
+                      please wait ...
+                  </span>
+                  Upload
+              </button>
+           </form>
       </div>
+      <span ng-if="loading" class="loading">
+          <h1> please wait ...<h1>
+      </span>
     </div>
 
     <div class="contents">
