@@ -11,37 +11,20 @@ var Thought = mongoose.model('Thoughts');
 var User = mongoose.model('User');
 var Upload = mongoose.model('Upload');
 
-// var storage = s3({
-//   destination: function (req, file, cb) {
-//     cb(null, 'multer-uploads/uploadedPics')
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
-// 	},
-// 	bucket      : 'fotomartploads',
-// 	region      : 'us-west-2',
-// 	acl : 'public-read'
-// });
- 
-// var upload = multer({ storage: storage });
+aws.config.update({
+	secretAccessKey: 'XoAHPYdKNhxKqQiQ7LdBadcTJW631JhzD/eI8/FH',
+	accessKeyId: 'AKIAINFPVITBHTJZRDVQ',
+});
 
-// var profileStorage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './public/uploads/profilePics/')
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
-//   }
-// })
+var s3 = new aws.S3({});
 
-// var profilePicUpload = multer({ storage: profileStorage });
-
-var s3 = new aws.S3();
-
-var upload = multer({
+var upload = multer(
+	{
+	
   storage: multerS3({
     s3: s3,
-    bucket: 'fotomartploads',
+		bucket: 'fotomartploads',
+		acl: 'public-read',
     metadata: function (req, file, cb) {
       cb(null, {fieldName: file.fieldname});
     },
@@ -49,7 +32,29 @@ var upload = multer({
       cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname));
     }
   })
-})
+});
+
+// var storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'E:/fotomart/public/uploads/')
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
+//   }
+// })
+ 
+// var upload = multer({ storage: storage });
+
+// var profileStorage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'E:/fotomart/public/uploads/profilePics/')
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
+//   }
+// })
+
+// var profilePicUpload = multer({ storage: profileStorage });
 
 var conn = mongoose.connection;
 
@@ -84,7 +89,6 @@ router.post('/picUpload/', upload.single('file'), function (req, res, next) {
   };
   Upload.create(newUpload, function (err, next) {
     if (err) {
-
       next(err);
     } else {
       res.send(newUpload);
