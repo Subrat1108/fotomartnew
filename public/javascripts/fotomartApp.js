@@ -1,12 +1,26 @@
 "use strict";
-var app = angular.module('fotoMart', ['ngRoute', 'ngResource','ngFileUpload']).run(function($http, $rootScope) {
-	$rootScope.authenticated = false;
-	$rootScope.current_user = 'Guest';
+var app = angular.module('fotoMart', ['ngRoute', 'ngResource','ngFileUpload','ngCookies']).run(function($http, $rootScope,$cookieStore) {
+	// $rootScope.authenticated = false;
+  // $rootScope.current_user = 'Guest';
+  var id = $cookieStore.get('authentication');
+  console.log(id);
+  if(id = true){
+    $rootScope.authenticated = $cookieStore.get('authentication');
+    $rootScope.current_user = $cookieStore.get('username');
+    $rootScope.current_user_id = $cookieStore.get('userId');
+  }
+  else{
+    $rootScope.authenticated = false    
+    $rootScope.current_user = "Guest"
+}
 
 	$rootScope.signout = function(){
-		$http.get('auth/signout');
+    $http.get('auth/signout');
 		$rootScope.authenticated = false;
-		$rootScope.current_user = 'Guest';
+    $rootScope.current_user = 'Guest';
+    $cookieStore.remove('userId');
+    $cookieStore.remove('username');
+    $cookieStore.remove('authentication');
 	};
 });
 
@@ -68,7 +82,7 @@ $scope.thoughtUpload = function() {
 
 /************************************************/
 
-app.controller('authController', function($scope, $http, $rootScope, $location){
+app.controller('authController', function($scope, $http, $rootScope, $location,$cookieStore){
   $scope.user = {username: '', password: ''};
   $scope.error_message = '';
 
@@ -76,9 +90,15 @@ app.controller('authController', function($scope, $http, $rootScope, $location){
     $http.post('/auth/login', $scope.user).success(function(data){
       if(data.state == 'success'){
         $rootScope.authenticated = true;
-        alert($rootScope.authenticated);
-        $rootScope.current_user = data.user.username;
-        $rootScope.current_user_id = data.user._id;
+        // $rootScope.current_user = data.user.username;
+        // $rootScope.current_user_id = data.user._id;
+        $cookieStore.put("username", data.user.username);
+        $cookieStore.put("userId", data.user._id);
+        $cookieStore.put("authentication", true);
+        $rootScope.authenticated = $cookieStore.get('authentication');
+        console.log($cookieStore.get('username'));
+        $rootScope.current_user = $cookieStore.get('username');
+        $rootScope.current_user_id = $cookieStore.get('userId');
         $location.path('/');
         
       }
@@ -91,9 +111,12 @@ app.controller('authController', function($scope, $http, $rootScope, $location){
   $scope.register = function(){
     $http.post('/auth/signup', $scope.user).success(function(data){
       if(data.state == 'success'){
-        $rootScope.authenticated = true;
-        alert($rootScope.authenticated);
-        $rootScope.current_user = data.user.username;
+        // $rootScope.authenticated = true;
+        // $rootScope.current_user = data.user.username;
+        $cookieStore.put("username", data.user.username);
+        $cookieStore.put("authentication", true);
+        $rootScope.authenticated = $cookieStore.get('authentication');
+        $rootScope.current_user = $cookieStore.get('username');
         $location.path('/');
       }
       else{
@@ -101,7 +124,8 @@ app.controller('authController', function($scope, $http, $rootScope, $location){
       }
     });
   };
-});
+
+ });
 
 /************************************************/
 

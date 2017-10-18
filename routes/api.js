@@ -30,21 +30,11 @@ var upload = multer(
       cb(null, {fieldName: file.fieldname});
     },
     key: function (req, file, cb) {
-      cb(null,'https://s3.ap-south-1.amazonaws.com/fotomartploads/'+ file.fieldname + '-' + Date.now()+ path.extname(file.originalname));
+      cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname));
     }
   })
 });
 
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, 'E:/fotomart/public/uploads/')
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, file.fieldname + '-' + Date.now()+ path.extname(file.originalname))
-//   }
-// })
- 
-// var upload = multer({ storage: storage });
 
 // var profileStorage = multer.diskStorage({
 //   destination: function (req, file, cb) {
