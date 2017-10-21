@@ -70,7 +70,7 @@ li{
 #myCarousel{
     display: block;
     height: 450px;
-    width: 1150px;
+    width: 100%;
     overflow: hidden;
     background-color: slategrey;
 }
@@ -117,11 +117,11 @@ margin-top: 30px;
 }
 .modalImg{
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 .modal-body{
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 
@@ -164,4 +164,12 @@ margin-top: 30px;
     text-align: center;
     color : red;
 
+  }
+
+  .container{
+      width: 100%;
+  }
+
+  .menuIcon{
+      display: none;
   }

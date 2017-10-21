@@ -21,8 +21,22 @@ var app = angular.module('fotoMart', ['ngRoute', 'ngResource','ngFileUpload','ng
     $cookieStore.remove('userId');
     $cookieStore.remove('username');
     $cookieStore.remove('authentication');
-	};
+  };
+  
+
+  $rootScope.res = "resHide";
+
+  $rootScope.menuHideShow = function(){
+    if($rootScope.res === "resHide"){
+      $rootScope.res = "resShow";
+    }
+    else{
+      $rootScope.res = "resHide";
+    }
+   }
 });
+
+
 
 app.config(function($routeProvider){
     $routeProvider
