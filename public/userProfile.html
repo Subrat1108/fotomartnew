@@ -1,32 +1,26 @@
 
 <div id="mySidenav" class="sidenav" >
 
-    <div id="sideNavMenu">
+        <div style="font-size:1.8vw">
 
-        <div>
-
-            <!-- <img src="./uploads/profilePics/{{DP.file.filename}}" style="width :40px"> -->
-
-            <!-- <form ng-submit="changePic()" class="form-inline" style="padding-bottom : 20px">
-                <input class="form-control btn-default" type="file" name="file" id="file" ng-model="DP.file" ngf-select ngf-max-size="25MB"/>
-                <button class="btn btn-default" type="submit" value="Upload">Upload</button>
-            </form> -->
             {{current_user}}
 
         </div>
         <div>
-            <li ng-click="viewSetter1()">My portfolio</li>
-            <li ng-click="viewSetter2()">My followings</li>
-            <li ng-click="viewSetter3()">My Followers</li>
-            <li ng-click="viewSetter4()">My Settings</li>
+            <span class="closebtnNav" ng-click="closeNav()">&times;</span>
+            <li ng-click="viewSetter1()" style="font-size:1.5vw">My portfolio</li>
+            <li ng-click="viewSetter2()" style="font-size:1.5vw">My followings</li>
+            <li ng-click="viewSetter3()" style="font-size:1.5vw">My Followers</li>
+            <li ng-click="viewSetter4()" style="font-size:1.5vw">My Settings</li>
         </div>
         <div id="sideNavFooter">
-                <li><a href="#">logout</a></li>
-                <li><a href="#">Delete Account</a></li>
+                <li><a href="#" style="font-size:1.5vw">logout</a></li>
+                <li><a href="#" style="font-size:1.5vw">Delete Account</a></li>
         </div>
-    </div>
 </div>
 
-<div class="main"  ng-include="subView">
-    <h1>Welcome {{current_user}}</h1>
+<div class="profileMenuDrop" ng-click="openNav()"><span class="glyphicon glyphicon-menu-right" style="font-size : 400%"></span></div>
+
+<div class="mainPortfolio"  ng-include="subView">
+    <h1 style="font-size:1vw">Welcome {{current_user}}</h1>
 </div>
