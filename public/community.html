@@ -9,7 +9,7 @@
            <input type="submit"  value="Post your Thoughts">
       </form>
       </div>
-      <div class="post" ng-repeat="post in thoughts" ng-class-odd="'odd post'" ng-class-even="'even post'"> <!---addl param :true reverses order -->
+      <div class="post" ng-repeat="post in thoughts|orderBy : '-created'" ng-class-odd="'odd post'" ng-class-even="'even post'"> <!---addl param :true reverses order -->
           <p>{{post.post}}</p>
           <small>Posted by <span style="color : orange"> {{post.created_by}}</span></small> <small class="pull-right">{{post.created_at | date:"h:mma 'on' MMM d, y"}}</small>
       </div>

@@ -10,9 +10,19 @@
 		<script src ="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-cookies.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/11.2.0/ng-file-upload.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-animate.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-aria.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular-messages.min.js"></script> -->
+	
+		<!-- Angular Material Library -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.js"></script> -->
+
 		<script src="/javascripts/fotomartApp.js"></script>
+
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="/stylesheets/style.css">
 		<link rel="stylesheet" href="/stylesheets/responsive.css">
 
@@ -28,7 +38,7 @@
 						
 						<ul class="nav navbar-nav {{res}}" >
                <li><a href="#">Home</a></li>
-               <li><a href="#/userProfile">Profile</a></li>
+               <li ng-show="authenticated"><a href="#/userProfile">Profile</a></li>
                <li><a href="#/community">Community</a></li>
 							 <li><a href="#/competition">Competition</a></li>
 							 <li><a href="#/cart">Cart</a></li>

@@ -1,5 +1,5 @@
 body {
-	padding-top:70px;
+
 	width: 100%;
     height: 100%;
 
@@ -59,10 +59,9 @@ li:hover{
 }
 
 .contents{
-    padding: 20px;
-    margin: 30px;
     overflow-y: auto;
-    float: left;   
+    float: left; 
+    margin-top: 10px; 
 }
 li{
     list-style-type: none;

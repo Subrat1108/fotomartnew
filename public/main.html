@@ -83,12 +83,21 @@
       </div>
     </div>
 
-    <div class="contents">
-      <li class="col-lg-3 col-md-4 col-xs-6" ng-repeat="upload in uploads">
-        <p>{{upload.name}}</p>
+    <div class="contents" id="cardImg">
+      <li class="cards" ng-repeat="upload in uploads| orderBy : '-created'" >
         <a data-toggle="modal" data-target="#myModal" ng-click="modalContents(upload)">
         <img class="img-fluid img-thumbnail" src='https://fotomartploads.s3.amazonaws.com/{{upload.file.key}}'>
         </a>
+        <div id="cardUser">
+          <b style="color : slategray"><i>fotography by : </i></b><b style="color :orange">{{upload.created_by}}</b>
+        </div>
+        <div id="cardDescription">
+            <p>{{upload.name}}</p>
+        </div>
+        <div id="cardUpvotes">
+          <span class="glyphicon glyphicon-heart-empty"></span>
+          <span class="glyphicon glyphicon-share"></span>
+        </div>
       </li>
     </div>
     

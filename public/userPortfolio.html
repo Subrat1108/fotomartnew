@@ -1,9 +1,24 @@
-<div class="contents">
-    <li class="col-lg-3 col-md-4 col-xs-6" ng-repeat="upload in userUploads">
+<div class="contents" id="cardImg">
+    <!-- <li class="col-lg-3 col-md-4 col-xs-6" ng-repeat="upload in userUploads">
       <a data-toggle="modal" data-target="#myModal" ng-click="modalContents(upload)">
       <img class="img-fluid img-thumbnail" src='https://fotomartploads.s3.amazonaws.com/{{upload.file.key}}'>
       </a>
-    </li>
+    </li> -->
+    <li class="cards" ng-repeat="upload in userUploads| orderBy : '-created'" >
+        <a data-toggle="modal" data-target="#myModal" ng-click="modalContents(upload)">
+        <img class="img-fluid img-thumbnail" src='https://fotomartploads.s3.amazonaws.com/{{upload.file.key}}'>
+        </a>
+        <div id="cardUser">
+          <b style="color : slategray"><i>fotography by : </i></b><b style="color :orange">{{upload.created_by}}</b>
+        </div>
+        <div id="cardDescription">
+            <p>{{upload.name}}</p>
+        </div>
+        <div id="cardUpvotes">
+          <span class="glyphicon glyphicon-remove" ng-click="deleteFile()"></span>
+          <span class="glyphicon glyphicon-share"></span>
+        </div>
+      </li>
   </div>
 
   <!-- Modal -->
@@ -20,7 +35,7 @@
         <img src='https://fotomartploads.s3.amazonaws.com/{{userData.file.key}}'class="modalImg">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" ng-click="downloadFile()" data-dismiss="modal">Download</button>
+        <!-- <button type="button" class="btn btn-default" ng-click="downloadFile()" data-dismiss="modal">Download</button> -->
         <button type="button" class="btn btn-default" ng-click="deleteFile()" data-dismiss="modal">Delete</button>
       </div>
     </div>

@@ -68,8 +68,9 @@ isAuthenticated = function (req, res, next) {
 	res.redirect('/#login');
 };
 
-
-router.post('/picUpload/', upload.single('file'), function (req, res, next) {
+router.use('/picUpload', isAuthenticated);
+router.route('/picUpload/')
+.post(upload.single('file'), function (req, res, next) {
   console.log(req.body);
   console.log(req.file);
   var newUpload = {
@@ -204,6 +205,26 @@ router.route('/thoughts')
 			}
 		});
 	});
+
+
+/****************** Upvote api *************************************************/
+// var CommentSchema = new mongoose.Schema({});
+// CommentSchema.plugin(require('../node_modules/mongoose-voting/'));
+
+
+// router.post('/upvote', function(req,res,next){
+// req.body.plugin(require('../node_modules/mongoose-voting/'));
+// console.log(req.body);
+// if(req.body.upvoted(User)){
+// 	res.send(console.log("already uploaded"));
+// }
+// req.body.upvote(User,function(err,doc){
+// 	doc.upvoted(User);
+// });
+// });
+
+
+
 	
 var createHash = function(password){
 	return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);

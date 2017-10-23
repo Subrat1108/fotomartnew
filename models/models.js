@@ -20,6 +20,7 @@ var UploadSchema = new mongoose.Schema({
 	file: Object
 });
 
+
 mongoose.model('Thoughts', thoughtSchema);
 mongoose.model('User', userSchema);
 mongoose.model('Upload', UploadSchema);

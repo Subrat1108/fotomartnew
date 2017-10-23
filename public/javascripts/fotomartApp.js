@@ -36,7 +36,9 @@ var app = angular.module('fotoMart', ['ngRoute', 'ngResource','ngFileUpload','ng
    }
 });
 
-
+// app.config(['$mdIconProvider', function($mdIconProvider) {
+//   $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
+// }]);
 
 app.config(function($routeProvider){
     $routeProvider
@@ -78,18 +80,24 @@ app.config(function($routeProvider){
 
 
 
-app.controller("forumController", function($scope,thoughtService,$rootScope){
+app.controller("forumController", function($scope,thoughtService,$rootScope,$location,$cookieStore){
 
 $scope.thoughts = thoughtService.query();
   
 $scope.thoughtUpload = function() { 
+  var id = $cookieStore.get('authentication');
+  if(id!==undefined){
   thoughtService.save({post : $scope.post, created_by: $rootScope.current_user,created_at : Date.now()},
     function(){
       $scope.post = "";
       $scope.thoughts = thoughtService.query();
       
     }
-  );
+  );}
+  else{
+    alert('you haved not logged in');
+    $location.path('/login');
+  }
 }
 
 });
@@ -143,7 +151,7 @@ app.controller('authController', function($scope, $http, $rootScope, $location,$
 
 /************************************************/
 
-app.controller("mainController", function($scope,Upload,$http,$rootScope){
+app.controller("mainController", function($scope,Upload,$http,$rootScope,upvoteService,$location,$cookieStore){
 
   $http.get('/api/picUpload/').then(function(response){
     console.log(response.data);
@@ -171,7 +179,9 @@ app.controller("mainController", function($scope,Upload,$http,$rootScope){
 
   $scope.submit = function(){
     $scope.upload.current_user = $rootScope.current_user;
-    $scope.loading = true; 
+    $scope.loading = true;
+    var id = $cookieStore.get('authentication');
+    if(id !== undefined){
     Upload.upload({
       url: '/api/picUpload/',
       method: 'post',
@@ -185,7 +195,12 @@ app.controller("mainController", function($scope,Upload,$http,$rootScope){
       $scope.uploads = response.data;
       $scope.loading = false; 
     });}
-  )
+  )}
+  else{
+    alert('you have not logged in');
+    $location.path('/login');
+
+  }
 }
 
   $scope.readData = function(data){
@@ -194,6 +209,12 @@ app.controller("mainController", function($scope,Upload,$http,$rootScope){
 
   $scope.modalContents = function(data){
     $rootScope.modalContent = data;   
+  }
+
+  $scope.upvote = function(data){
+
+    upvoteService.save({uploadedPic : data});
+
   }
   
   $scope.downloadFile = function(){
@@ -326,4 +347,7 @@ app.factory('thoughtService', function($resource, $rootScope){
 
 app.factory('userService', function($resource, $rootScope){
   return $resource('/api/picUpload/user');
+});
+app.factory('upvoteService', function($resource){
+  return $resource('/api/upvote/');
 });
